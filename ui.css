@@ -1,0 +1,308 @@
+* {
+  font-family: 'Segoe UI';
+  font-size: 12px;
+  line-height: 1.428571429;
+  outline: none;
+  color: #9da5b4;
+}
+body {
+  background-color: #23272e;
+}
+label {
+  display: block;
+  margin: 0 0.6em 0.6em 0;
+}
+label.checkbox input,
+label.toggle input,
+label.radio input {
+  -webkit-appearance: none;
+  background-color: #3f444d;
+  transition: background-color 0.16s cubic-bezier(0.5, 0.15, 0.2, 1);
+  cursor: pointer;
+  height: 16px;
+  vertical-align: middle;
+  margin-top: -0.05em;
+  position: relative;
+}
+label.checkbox input {
+  border-radius: 3px;
+  width: 16px;
+}
+label.checkbox input:checked {
+  background-color: #568af2;
+}
+label.checkbox input:checked::before,
+label.checkbox input:checked::after {
+  opacity: 1;
+  transition-delay: .05s;
+}
+label.checkbox input:checked::before {
+  width: 5.28px;
+}
+label.checkbox input:checked::after {
+  width: 10.56px;
+}
+label.checkbox input::before,
+label.checkbox input::after {
+  content: "";
+  opacity: 0;
+  position: absolute;
+  height: 2px;
+  border-radius: 1px;
+  transition: width 0.2s cubic-bezier(0.5, 0.15, 0.2, 1), opacity 0.2s cubic-bezier(0.5, 0.15, 0.2, 1);
+  background-color: #001133;
+  width: 0px;
+}
+label.checkbox input::before {
+  top: 8px;
+  left: 2px;
+  transform: translate3d(0, 0, 0) rotate(225deg) scale(1);
+}
+label.checkbox input::after {
+  top: 7px;
+  left: 4px;
+  transform: translate3d(0, 0, 0) rotate(-45deg) scale(1);
+}
+label.toggle input {
+  border-radius: 16px;
+  width: 36px;
+  overflow: hidden;
+}
+label.toggle input::before,
+label.toggle input::after {
+  content: "";
+  position: absolute;
+  transition: all 0.2s cubic-bezier(0.5, 0.15, 0.2, 1);
+}
+label.toggle input::before {
+  width: 0px;
+  height: 16px;
+  background-color: #568af2;
+  left: 0;
+  top: 0;
+}
+label.toggle input::after {
+  width: 8px;
+  height: 8px;
+  top: 4px;
+  left: 4px;
+  background-color: #001133;
+  border-radius: 6px;
+}
+label.toggle input:checked::before {
+  width: 36px;
+}
+label.toggle input:checked::after {
+  left: 24px;
+}
+label.radio input {
+  width: 16px;
+  border-radius: 16px;
+}
+label.radio input:checked {
+  background-color: #568af2;
+}
+label.radio input:checked::before {
+  width: 8px;
+  height: 8px;
+  opacity: 1;
+  left: 4px;
+  top: 4px;
+  border-radius: 8px;
+}
+label.radio input::before {
+  content: "";
+  background-color: #001133;
+  width: 0px;
+  height: 0px;
+  left: 8px;
+  top: 8px;
+  border-radius: 0px;
+  transition: all 0.2s cubic-bezier(0.5, 0.15, 0.2, 1);
+  opacity: 0;
+  position: absolute;
+}
+label.input input,
+label.number input,
+label.id input {
+  background-color: #3f444d;
+  border-radius: 3px;
+  padding: 4px 6px 4px 6px;
+  border: 2px solid rgba(157, 165, 180, 0.1);
+  transition: all 0.2s cubic-bezier(0.5, 0.15, 0.2, 1);
+  cursor: pointer;
+}
+label.input input:focus,
+label.number input:focus,
+label.id input:focus {
+  border-color: #568af2;
+  cursor: auto;
+}
+label.input input::selection,
+label.number input::selection,
+label.id input::selection {
+  color: #568af2;
+  background-color: rgba(86, 138, 242, 0.15);
+}
+label.number input,
+label.id input {
+  width: 68px;
+}
+label.number input::-webkit-inner-spin-button,
+label.id input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+label.number.in input,
+label.number.as input,
+label.id input,
+label.number.display input {
+  width: 40px;
+  border-radius: 3px 0px 0px 3px;
+  border-right: none;
+}
+label.number.in::after,
+label.number.as::after,
+label.id::after,
+label.number.display::after {
+  content: "123";
+  background-color: rgba(157, 165, 180, 0.3);
+  width: 28px;
+  height: 25px;
+  border-radius: 0px 3px 3px 0px;
+  transition: all 0.2s cubic-bezier(0.5, 0.15, 0.2, 1);
+  position: absolute;
+  border: 2px solid rgba(157, 165, 180, 0.1);
+  border-left: none;
+  color: #001133;
+  line-height: 25px;
+  text-align: center;
+}
+label.number.in.active::after,
+label.number.as.active::after,
+label.id.active::after,
+label.number.display.active::after {
+  border-color: #568af2;
+  background-color: rgba(157, 165, 180, 0.5);
+}
+label.number.in.integer,
+label.number.as.integer,
+label.id.integer,
+label.number.display.integer {
+  content: "123";
+}
+label.number.in.percent::after,
+label.number.as.percent::after,
+label.id.percent::after,
+label.number.display.percent::after {
+  content: "%";
+}
+label.number.in.pixels::after,
+label.number.as.pixels::after,
+label.id.pixels::after,
+label.number.display.pixels::after {
+  content: "px";
+}
+label.number.in.xl input,
+label.number.as.xl input,
+label.id.xl input,
+label.number.display.xl input {
+  width: 64px;
+}
+label.number.in.id::after,
+label.number.as.id::after,
+label.id.id::after,
+label.number.display.id::after {
+  content: "ID";
+}
+label.range input[type="range"] {
+  width: 144px;
+  -webkit-appearance: none;
+  background-color: #3f444d;
+  border-radius: 2px;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0.5, #001133), color-stop(0.5, #3f444d));
+  vertical-align: middle;
+}
+label.range input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  -webkit-appearance: none;
+  color: #001133;
+  margin-top: -1px;
+}
+label.range input[type="range"]::-webkit-slider-thumb {
+  width: 16px;
+  -webkit-appearance: none;
+  height: 16px;
+  cursor: pointer;
+  background: #568af2;
+  border-radius: 16px;
+  margin-top: -6px;
+  transition: all 0.2s cubic-bezier(0.5, 0.15, 0.2, 1);
+}
+label.range input[type="range"]::-webkit-slider-thumb:hover {
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  margin-top: -7.5px;
+}
+label.range.thin input[type="range"] {
+  overflow: hidden;
+}
+label.range.thin input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+}
+label.range.thin input[type="range"]::-webkit-slider-thumb {
+  border-radius: 0;
+}
+label.range.thin input[type="range"]::-webkit-slider-thumb:hover {
+  border-radius: 0;
+}
+label.range.with.value::after {
+  content: attr(data-after);
+  color: #9da5b4;
+  vertical-align: middle;
+  margin-left: 0.5em;
+}
+label.range.with.edit input[type="number"] {
+  background-color: #3f444d;
+  border-radius: 3px;
+  padding: 4px 6px 4px 6px;
+  border: 2px solid rgba(157, 165, 180, 0.1);
+  transition: all 0.2s cubic-bezier(0.5, 0.15, 0.2, 1);
+  cursor: pointer;
+  background-image: none;
+  width: 68px;
+}
+label.range.with.edit input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+label.range.with.edit input[type="number"]:focus {
+  border-color: #568af2;
+  cursor: auto;
+}
+label.range.with.edit input[type="number"]::selection {
+  color: #568af2;
+  background-color: rgba(86, 138, 242, 0.15);
+}
+label span {
+  width: 144px;
+  display: inline-block;
+}
+label span.xl {
+  width: 210px;
+}
+label span.right {
+  text-align: right;
+  margin-right: 24px;
+}
+div.ui-group label {
+  line-height: 32px;
+}
+div.ui-group label.number.in::after,
+div.ui-group label.number.as::after,
+div.ui-group label.id::after,
+div.ui-group label.number.display::after {
+  margin-top: 2px;
+}
+.big {
+  font-size: 16px;
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Test UI</title>
+		<link rel="stylesheet" href="ui.css">
+		<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+	</head>
+	<body>
+		<label for="my_checkbox" class="checkbox">
+			<input type="checkbox" name="" value="">
+			My checkbox is cool
+		</label>
+		<label for="my_checkbox" class="checkbox">
+			<input type="checkbox" name="" value="">
+			My checkbox is cool and checked
+		</label>
+		<label for="my_toggle" class="toggle">
+			<input type="checkbox" name="" value="">
+			My toggle is cool
+		</label>
+		<label for="my_toggle" class="toggle">
+			<input type="checkbox" name="" value="">
+			My toggle is cool and toggled
+		</label>
+		<br>
+		<label for="my_radio" class="radio">
+			<input type="radio" name="my_radio" value="">
+			Radio
+		</label>
+		<label for="my_radio" class="radio">
+			<input type="radio" name="my_radio" value="">
+			Radio
+		</label>
+		<label for="my_radio" class="radio">
+			<input type="radio" name="my_radio" value="">
+			Radio
+		</label>
+		<br>
+
+		<!-- <label class="number">
+			<input type="number" value="512">
+		</label>
+		<label class="number in pixels">
+			<input type="number" value="512">
+		</label>
+		<label class="number in percent">
+			<input type="number" value="512">
+		</label> -->
+
+		<div class="ui-group">
+			<label for="my_text" class="input">
+				<span>Name:</span>
+				<input type="text" name="my_text" value="">
+			</label>
+			<label for="my_text" class="input">
+				<span>Surname:</span>
+				<input type="text" name="my_text" value="">
+			</label>
+			<label for="my_id" class="id">
+				<span>Please enter an ID:</span>
+				<input type="number" name="my_id" value="512">
+			</label>
+			<label class="number as integer">
+				<span>Number of potatoes:</span>
+				<input type="number" value="512">
+			</label>
+			<label class="range">
+				<span>My slider:</span>
+				<input type="range" name="" value="20">
+			</label>
+			<label class="range with value">
+				<span>My slider with number:</span>
+				<input type="range" name="" value="20">
+			</label>
+			<label class="range with edit">
+				<span>My slider with number:</span>
+				<input type="range" name="" value="20">
+				<input type="number" name="" value="">
+			</label>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script type="text/javascript">
+		$(document).ready(() => {
+
+			// === Colors ===
+
+			$colors = {
+				black: '#001133',
+				inactive: '#3f444d',
+				inactive_hover: '#646b76',
+				text: '#9da5b4'
+			};
+
+			// === Numbers (highlighting) ===
+
+			$('label.number input, label.id input').on('focus', function () {
+				$(this).parent().addClass('active');
+			}).on('blur', function () {
+				$(this).parent().removeClass('active');
+			});
+
+			// === Ranges ===
+
+			// Sets attributes at init
+			if($('label.range input').attr('min') === undefined) {
+				$('label.range input').attr('min', 0);
+			}
+			if($('label.range input').attr('max') === undefined) {
+				$('label.range input').attr('max', 100);
+			}
+
+			// Updates at init
+			update_range($('label.range input[type="range"]'));
+			update_range_with_value($('label.range.with.value input[type="range"]'));
+			update_range_with_edit($('label.range.with.edit input[type="range"]'));
+
+			// Binds mousemove
+			$('label.range input[type="range"]').on('mousemove', function () {
+				update_range($(this));
+			});
+			$('label.range.with.value input[type="range"]').on('mousemove', function () {
+				update_range_with_value($(this));
+			})
+			$('label.range.with.edit input[type="range"]').on('mousemove', function () {
+				update_range_with_edit($(this));
+			});
+			$('label.range.with.edit input[type="number"]').on('change', function () {
+				update_edit_with_range($(this));
+			});
+			function update_range(el) {
+				var val = (el.val() - el.attr('min')) / (el.attr('max') - el.attr('min'));
+				el.css('background-image',
+				`-webkit-gradient(linear, left top, right top, color-stop(${val}, ${$colors.inactive_hover}), color-stop(${val}, ${$colors.inactive}))`);
+				// el.parent().attr('data-after', `${el.val()}`);
+				// el.parent().find('input[type="number"]').val(el.val());
+			}
+			function update_range_with_value(el) {
+				el.parent().attr('data-after', `${el.val()}`);
+			}
+			function update_range_with_edit(el) {
+				el.parent().find('input[type="number"]').val(el.val());
+			}
+			function update_edit_with_range(el) {
+				el.parent().find('input[type="range"]').val(el.val());
+				update_range(el.parent().find('input[type="range"]'));
+			}
+		});
+		</script>
+		<script>if (window.module) module = window.module;</script>
+	</body>
+</html>
