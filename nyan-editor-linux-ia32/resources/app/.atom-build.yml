@@ -1,0 +1,4 @@
+cmd: "lessc ui.less ui.css --clean-css"
+name: "Build Electron"
+sh: true
+cwd: F:\Documents\Adrien\Documents\dev\electron\nyan-editor\nyan-editor

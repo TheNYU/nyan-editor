@@ -4,7 +4,7 @@
   "description": "Nyan Editor is the dedicated editor for Nyan engine",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+	"test": "electron ."
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/TheNYU/nyan-editor#readme",
   "devDependencies": {
-    "electron": "^1.6.11",
-    "electron-packager": "^8.7.1"
+    "electron": "^1.6.11"
   }
 }
