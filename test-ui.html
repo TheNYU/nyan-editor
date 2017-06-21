@@ -78,6 +78,9 @@
 				<input type="range" name="" value="20">
 				<input type="number" name="" value="">
 			</label>
+			<label class="color">
+				<input type="color" value="#FF0000">
+			</label>
 		</div>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -133,8 +136,6 @@
 				var val = (el.val() - el.attr('min')) / (el.attr('max') - el.attr('min'));
 				el.css('background-image',
 				`-webkit-gradient(linear, left top, right top, color-stop(${val}, ${$colors.inactive_hover}), color-stop(${val}, ${$colors.inactive}))`);
-				// el.parent().attr('data-after', `${el.val()}`);
-				// el.parent().find('input[type="number"]').val(el.val());
 			}
 			function update_range_with_value(el) {
 				el.parent().attr('data-after', `${el.val()}`);

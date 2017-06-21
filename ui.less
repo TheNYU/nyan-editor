@@ -306,6 +306,33 @@ label {
 			}
 		}
 	}
+	&.color {
+		& input[type="color"] {
+			@size: 32px;
+			-webkit-appearance: none;
+			width: @size;
+			height: @size + 2;
+			border-radius: @size;
+			// overflow: hidden;
+			border: solid 3px @black;
+			position: relative;
+			position: relative;
+			&::-webkit-color-swatch {
+				border: none;
+			    border-radius: 32px;
+			    max-width: 22px !important;
+			    height: 22px;
+			    box-shadow: 0 0 0 1px #013;
+			    transform: scale(2);
+			    margin: 2px;
+			    margin-top: 4px;
+			    margin-left: 4px;
+				&-wrapper {
+					padding: 0;
+				}
+			}
+		}
+	}
 	& span {
 		width: 144px;
 		display: inline-block;
